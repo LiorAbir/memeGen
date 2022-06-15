@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    src: url(/fonts/impact.zip);
+}
+
+@font-face {
+    font-family: poppins, serif;
+    src: url(/fonts/Poppins.zip);
+}

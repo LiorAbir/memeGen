@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMEGEN</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="inIt()">
+
+    <header class="main-header flex space-between">
+
+        <h2>memegen</h2>
+        <!-- <img src="logo/LOGO.png" alt=""> -->
+        <nav class="main-nav">
+            <ul class="clean-list flex">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-container">
+
+        <div class="main-page">
+            <div class="filter-container">
+                <input type="search" name="filter" placeholder="Search"/>
+                <div class="words-filter">hhhhh</div>
+                <button class="btn more-btn">More</button>
+            </div>
+
+            <div class="gallery-container"></div>
+        </div>
+
+
+        <div class="edit-page">
+
+            <div class="edit-container">
+                <input type="text" name="txt" oninput="onSetLineTxt(this.value)" />
+                <input type="color" name="fill-color" onchange="onSetFillColor(this.value)" />
+                <button class="btn increase-btn" onclick="onChangeLineSize(this)">increase</button>
+                <button class="btn decrease-btn" onclick="onChangeLineSize(this)">decrease</button>
+                <button class="btn switch-btn" onclick="onSwitchLine()">Switch line</button>
+
+            </div>
+
+            <div class="canvas-container">
+                <!-- <div class="focus"></div> -->
+                <canvas class="canvas" style="border: 1px solid black;"></canvas>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer></footer>
+
+
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <script src="js/galleryService.js"></script> -->
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
