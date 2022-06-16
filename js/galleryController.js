@@ -12,9 +12,15 @@ function renderGallery() {
 }
 
 function onImgSelect(imgId) {
-    
+    document.querySelector('.main-page').classList.add('hide')
+    document.querySelector('.edit-page').classList.remove('hide')
+
+    resizeCanvas()
     setImg(imgId)
     renderMeme()
-    document.querySelector('.main-page').style.display = 'none'
-    document.querySelector('.edit-page').style.display = 'block'
+    // resizeCanvas(imgId)
+    // document.querySelector('.main-page').style.display = 'none'
+    // document.querySelector('.edit-page').style.display = 'block'
+
+
 }

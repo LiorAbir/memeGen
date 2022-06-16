@@ -61,6 +61,7 @@
 /* gallery */
 
 .main-container .main-page {
+
     background-color: var(--clr4);
     padding: 25px;
     border-radius: 10px;
@@ -104,11 +105,143 @@
     display: grid;
 }
 
-
-
 .main-page .gallery-container .img {
     border-radius: 5px;
 }
+
+/* PAGE2 */
+
+/* editor */
+
+.edit-page {
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-page .canvas-container canvas {
+    border: 8px solid rgba(253, 253, 253, 0.245);
+    border-radius: 30px;
+}
+
+.canvas-container {
+    /* position: relative; */
+    margin-bottom: 40px;
+    /* background-color: aquamarine; */
+    width: 500px;
+    height: 500px;
+}
+
+.edit-page .edit-container {
+
+    width: 100%;
+
+    background-color: var(--clr4);
+    border-radius: 30px;
+    padding: 20px;
+
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: space-between; */
+
+    /* display: grid; */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+
+}
+
+.edit-container input {
+    background-color: var(--clr2);
+    border-radius: 30px;
+    grid-row: 1/2;
+    grid-column: 1/7;
+
+    text-align: center;
+    color: black;
+}
+
+.edit-container .txt-controll {
+    grid-row: 2/3;
+    grid-column: 1/7;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.edit-container .txt-edit {
+    grid-row: 3/5;
+    grid-column: 1/7;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    background-color: rgb(57 181 166);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+/* BOTTONS */
+
+.edit-container .txt-edit .btn {
+    background-color: var(--clr2);
+    padding: 5px;
+    font-weight: 700px;
+}
+
+.edit-container .txt-controll .btn {
+    /* padding: 0 7px; */
+    color: var(--clr2);
+}
+
+.edit-container .txt-controll .btn:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.txt-controll .switch-btn {
+    background-color: rgb(88, 180, 208);
+}
+
+.txt-controll .add-btn {
+    background-color: rgb(79, 216, 118);
+}
+
+.txt-controll .remove-btn {
+    background-color: rgb(222, 51, 51);
+}
+
+.txt-controll .up-btn {
+    background-color: rgb(220, 161, 22);
+}
+
+.txt-controll .down-btn {
+    background-color: rgb(205, 60, 147);
+}
+
+.edit-container .emojis-container {
+    grid-row: 5/6;
+    grid-column: 1/7;
+
+    background-color: var(--clr2);
+    border-radius: 30px;
+}
+
+.edit-container .save-btn {
+    background-color: rgb(168, 72, 190);
+    grid-row: 6/7;
+    grid-column: 4/7;
+}
+
+.edit-container .share-btn {
+    background-color: rgb(75, 129, 170);
+    grid-row: 6/7;
+    grid-column: 1/4;
+}
+
 
 /* mq */
 
@@ -140,6 +273,22 @@
     .main-container .main-page .gallery-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
+    }
+
+    .main-container .edit-page {
+        flex-direction: column;
+    }
+
+    /* .edit-page .canvas-container {
+        margin-bottom: 10px;
+        height: 500px;
+        margin: 20px;
+    } */
+
+    .edit-page .edit-container {
+        /* margin-left: 20px; */
+        /* margin-right: 50px; */
+        width: 70%;
     }
 
 
@@ -184,13 +333,25 @@
         gap: 1rem;
     }
 
+    .edit-page .edit-container {
+        height: 500px;
+        width: 80%;
+        margin: 0 50px 0 25px;
+    }
+
+    /* .edit-page .canvas-container {
+        height: 500px;
+        width: 80%;
+        margin: 0 25px 0 50px;
+    } */
+
 }
 
 @media(min-width:950px) {
 
-     /* MAIN CONTAINER */
+    /* MAIN CONTAINER */
 
-     .main-container .main-page .filter-container {
+    .main-container .main-page .filter-container {
         margin-bottom: 60px;
     }
 
@@ -199,42 +360,7 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 1.562rem;
         padding: 0 25px;
-    
+
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* editor */
-
-.main-container .edit-page {
-    display: none;
-    /* display: flex;
-    flex-direction: row; */
-}
-
-.canvas-container {
-    position: relative;
-    height: 50vh;
-    width: 100%;
-}
-
-/* .canvas-container .focus{
-    background-color: #ac2424;
-    height: 50px;
-    width: 100%;
-    position: fixed;
-    border: 5px solid black;
-} */

@@ -1,7 +1,7 @@
 'use strict'
 
 var gCurrLine = 0
-
+var gFont = 'impact'
 var gKeywordSearchCountMap = {
     'funny': 12,
     'cat': 16,
@@ -27,6 +27,8 @@ var gImgs = [
     { id: 16, url: 'imgs/16.jpg', keywords: ['funny', 'cat'] },
     { id: 17, url: 'imgs/17.jpg', keywords: ['funny', 'cat'] },
     { id: 18, url: 'imgs/18.jpg', keywords: ['funny', 'cat'] },
+    { id: 19, url: 'imgs/19.jpg', keywords: ['funny', 'cat'] },
+    { id: 20, url: 'imgs/20.jpg', keywords: ['funny', 'cat'] },
 ]
 
 var gMeme = {
@@ -35,23 +37,23 @@ var gMeme = {
     lines: [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red', 
+            size: 25,
+            align: 'right',
+            color: 'white',
             place: {
-                x:50,
-                y:100
+                x: 30,
+                y: 50
             },
             isSelected: true
         },
         {
-            txt: 'i love to sleep',
-            size: 20,
-            align: 'left',
-            color: 'red',
+            txt: 'I love to sleep',
+            size: 25,
+            align: 'ltr',
+            color: 'white',
             place: {
-                x:50,
-                y:200
+                x: 30,
+                y: 450
             },
             isSelected: false
         }
@@ -74,11 +76,11 @@ function setLineTxt(txt) {
     gMeme.lines[gCurrLine].txt = txt
 }
 
-function setFillColor(color){
+function setFillColor(color) {
     gMeme.lines[gCurrLine].color = color
 }
 
-function ChangeLineSize(diff){
+function ChangeLineSize(diff) {
     gMeme.lines[gCurrLine].size += diff
 }
 
@@ -87,19 +89,57 @@ function getImgById(imgId) {
     return img
 }
 
-function switchLine(){
-    console.log(1, gCurrLine);
-
+function switchLine() {
+    
     gMeme.lines[gCurrLine].isSelected = false
+    gCurrLine += 1
 
-    if(gMeme.lines.length-1 === gCurrLine){
-        gCurrLine--
-    }else{
-        gCurrLine++
-    }
+    if (gCurrLine === gMeme.lines.length) gCurrLine = 0
+    if (gCurrLine < 0) gCurrLine = 0
 
     gMeme.lines[gCurrLine].isSelected = true
+}
 
-    console.log(2, gCurrLine);
+function removeLine() {
+    gMeme.lines.splice(gCurrLine, 1)
+    gCurrLine = 0
+}
 
+function addLine(txt) {
+    if(gMeme.lines.length){
+      gMeme.lines[gCurrLine].isSelected = false  
+    }
+    var newLine = _createLine(txt)
+    gMeme.lines.push(newLine)
+    gCurrLine = gMeme.lines.length - 1
+}
+
+function _createLine(txt) {
+    return {
+        txt,
+        size: 25,
+        align: 'left',
+        color: 'white',
+        place: {
+            x: 50,
+            y: 300
+        },
+        isSelected: true
+    }
+}
+
+function moveTextDown() {
+    gMeme.lines[gCurrLine].place.y += 10
+}
+
+function moveTextUp() {
+    gMeme.lines[gCurrLine].place.y -= 10
+}
+
+function getFont() {
+    return gFont
+}
+
+function changeFont(font) {
+    gFont = font
 }
