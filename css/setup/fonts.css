@@ -4,6 +4,6 @@
 }
 
 @font-face {
-    font-family: poppins, serif;
-    src: url(/fonts/Poppins.zip);
+    font-family: popins;
+    src: url(../../fonts/Poppins.zip);
 }

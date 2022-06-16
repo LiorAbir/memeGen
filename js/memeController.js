@@ -26,7 +26,7 @@ function drawText(memeLine) {
 
 
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = memeLine.borderColor
     gCtx.fillStyle = memeLine.color
     gCtx.font = `${memeLine.size}px ${font}`
 
@@ -59,9 +59,20 @@ function onSetFillColor(color) {
     renderMeme()
 }
 
-function onChangeLineSize(elBtn) {
-    var diff = (elBtn.innerText === 'A +') ? 2 : -2
-    ChangeLineSize(diff)
+function onSetStrokeColor(color) {
+    setStrokeColor(color)
+    renderMeme()
+}
+
+function onDecreaseSize() {
+    console.log('hhh');
+    DecreaseSize()
+    renderMeme()
+}
+
+function onIncreaseSize() {
+    console.log('hhh');
+    IncreaseSize()
     renderMeme()
 }
 

@@ -24,3 +24,15 @@ function resizeCanvas() {
     gCanvas.width = elContainer.offsetWidth
     gCanvas.height = elContainer.offsetHeight
 }
+
+function onScreen() {
+    if (document.body.classList.contains('menu-open')) {
+        onToggleMenu()
+    }
+}
+
+function onToggleMenu() {
+    document.body.classList.toggle('menu-open')
+    var  elBtn = document.querySelector('.menu-btn')
+    elBtn.innerText = elBtn.innerText === '☰' ? '✖' : '☰'
+}

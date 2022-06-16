@@ -13,15 +13,17 @@
 
 <body onload="inIt()">
 
+    <div class="screen" onclick="onScreen()"></div>
+
     <header class="main-header flex space-between">
         <h2>memegen</h2>
         <nav class="main-nav">
-            <ul class="clean-list flex">
+            <ul class="clean-list nav">
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
-        <button class="btn menu-btn">&#9776</button>
+        <button class="btn menu-btn" onclick="onToggleMenu()">☰</button>
     </header>
 
     <section class="main-container">
@@ -59,21 +61,22 @@
 
 
                 <div class="txt-edit">
-                    <button class="btn btn1 increase-btn" onclick="onChangeLineSize(this)">&#65
+                    <button class="btn btn1 increase-btn" onclick="onIncreaseSize(this)">&#65
                         +</button>
-                    <button class="btn btn1 decrease-btn" onclick="onChangeLineSize(this)">&#65
+                    <button class="btn btn1 decrease-btn" onclick="onDecreaseSize(this)">&#65
                         -</button>
 
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToRtl()">left</button>
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()">right</button>
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()">center</button>
+                    <!-- <button class="btn btn1 rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-right"></i></button>
+                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button> -->
 
-                        <select name="fonts" onchange="onChangeFont(this.value)">
-                            <option value="Impact">Impact</option>
-                            <option value="Verdana">Vardana</option>
-                            <option value="Ariel">Ariel</option>
-                        </select>
+                    <select name="fonts" onchange="onChangeFont(this.value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Verdana">Vardana</option>
+                        <option value="Ariel">Ariel</option>
+                    </select>
                     <input type="color" name="fill-color" onchange="onSetFillColor(this.value)" />
+                    <input type="color" name="stroke-color" onchange="onSetStrokeColor(this.value)" />
                 </div>
 
                 <div class="emojis-container"></div>

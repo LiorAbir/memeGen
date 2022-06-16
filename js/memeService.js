@@ -40,6 +40,7 @@ var gMeme = {
             size: 25,
             align: 'right',
             color: 'white',
+            borderColor: 'black',
             place: {
                 x: 30,
                 y: 50
@@ -51,6 +52,7 @@ var gMeme = {
             size: 25,
             align: 'ltr',
             color: 'white',
+            borderColor: 'black',
             place: {
                 x: 30,
                 y: 450
@@ -80,8 +82,18 @@ function setFillColor(color) {
     gMeme.lines[gCurrLine].color = color
 }
 
-function ChangeLineSize(diff) {
-    gMeme.lines[gCurrLine].size += diff
+function setStrokeColor(color) {
+    gMeme.lines[gCurrLine].borderColor = color
+}
+
+function DecreaseSize() {
+    if (gMeme.lines[gCurrLine].size === 15) return
+    gMeme.lines[gCurrLine].size -= 1
+}
+
+function IncreaseSize() {
+    if (gMeme.lines[gCurrLine].size === 47) return
+    gMeme.lines[gCurrLine].size += 1
 }
 
 function getImgById(imgId) {
@@ -90,7 +102,7 @@ function getImgById(imgId) {
 }
 
 function switchLine() {
-    
+
     gMeme.lines[gCurrLine].isSelected = false
     gCurrLine += 1
 
@@ -106,8 +118,8 @@ function removeLine() {
 }
 
 function addLine(txt) {
-    if(gMeme.lines.length){
-      gMeme.lines[gCurrLine].isSelected = false  
+    if (gMeme.lines.length) {
+        gMeme.lines[gCurrLine].isSelected = false
     }
     var newLine = _createLine(txt)
     gMeme.lines.push(newLine)
@@ -120,6 +132,7 @@ function _createLine(txt) {
         size: 25,
         align: 'left',
         color: 'white',
+        borderColor: 'black',
         place: {
             x: 50,
             y: 300
