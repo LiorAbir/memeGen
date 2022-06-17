@@ -13,7 +13,10 @@
 
 /* COMPONENTS */
 
-@import 'compenents/header.css'
+@import 'compenents/header.css';
+@import 'compenents/gallery.css';
+@import 'compenents/edit.btns.css';
+@import 'compenents/screen.css';
 
 
 /* MEDIA QUERIES */

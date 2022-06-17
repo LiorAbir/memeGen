@@ -1,0 +1,47 @@
+.edit-container .txt-controll .btn:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.txt-controll .switch-btn {
+    background-color: rgb(88, 180, 208);
+}
+
+.txt-controll .add-btn {
+    background-color: rgb(79, 216, 118);
+}
+
+.txt-controll .remove-btn {
+    background-color: rgb(222, 51, 51);
+}
+
+.txt-controll .up-btn {
+    background-color: rgb(220, 161, 22);
+}
+
+.txt-controll .down-btn {
+    background-color: rgb(205, 60, 147);
+}
+
+.edit-container .save-btn {
+    background-color: rgb(168, 72, 190);
+}
+
+.edit-container .share-btn {
+    background-color: rgb(75, 129, 170);
+}
+
+
+.edit-container .save-container a{
+    color: var(--clr2);
+    text-decoration: none;
+}
+
+.btn2 {
+    border-radius: 7px;
+    color: var(--clr2);
+    border: 0;
+    padding: 5px;
+    box-shadow: inset 0px 2px 2px 0px #ffffff9e;
+    width: 50%;
+    margin: 5px;
+} 

@@ -11,8 +11,8 @@
     color: var(--clr2);
 }
 
-.main-header .menu-btn{
-    color:rgb(61 166 167);
+.main-header .menu-btn {
+    color: rgb(61 166 167);
     background-color: var(--clr2);
     border: 0;
     border-radius: 50%;
@@ -20,14 +20,14 @@
     transition: .3s;
 }
 
-/* gallery */
+/* MAIN PAGE */
 
-.main-container .main-page {
+/* GALLERY*/
 
+ .main-container .main-page {
     background-color: var(--clr4);
     padding: 25px;
     border-radius: 10px;
-    margin: 1rem;
 }
 
 .gallery-container .img:hover {
@@ -37,14 +37,16 @@
 .main-container .main-page .filter-container {
     color: var(--clr2);
     align-items: baseline;
+    justify-content: center;
 }
 
 .main-container .filter-container input {
+    border-radius: 30px;
     background-color: var(--clr5);
     border: 0;
     color: var(--clr2);
     padding: 1rem;
-    border-radius: 30px;
+    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
 }
 
 .main-container .filter-container .words-filter {
@@ -52,6 +54,8 @@
     background-color: var(--clr6);
     padding: 0.7rem;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+
+    width: 80%;
     margin-inline-end: 20px;
 }
 
@@ -60,11 +64,12 @@
     border-radius: 30px;
     border: 0;
     color: var(--clr2);
-    padding: 8px;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
 
     transition: 0.3s;
-    flex-grow: 1;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    text-align: center;
 }
 
 .main-container .main-page .gallery-container {
@@ -73,14 +78,15 @@
 
 .main-page .gallery-container .img {
     border-radius: 5px;
-}
+} 
 
-/* PAGE2 */
+
+
+/* EDIT PAGE */
 
 /* editor */
 
 .edit-page {
-    margin-top: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -89,149 +95,106 @@
     border: 8px solid rgba(253, 253, 253, 0.245);
     border-radius: 30px;
 }
-
-.canvas-container {
-    /* position: relative; */
-    margin-bottom: 40px;
-    /* background-color: aquamarine; */
-    width: 500px;
-    height: 500px;
-}
-
 .edit-page .edit-container {
-
-    width: 100%;
-
     background-color: var(--clr4);
     border-radius: 30px;
     padding: 20px;
 
-    /* display: flex;
-    flex-direction: column; */
-    /* justify-content: space-between; */
-
-    /* display: grid; */
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 10px;
-
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
 }
 
-.edit-container input {
+.edit-container .txt-controll {
+    /* background-color: aqua; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.txt-controll .txt-input {
     background-color: var(--clr2);
     border-radius: 30px;
-    grid-row: 1/2;
-    grid-column: 1/7;
+    width: 80%;
 
     text-align: center;
     color: black;
 }
 
-.edit-container .txt-controll {
-    grid-row: 2/3;
-    grid-column: 1/7;
-
+.txt-controll form {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
+.txt-controll form .btn {
+    font-size: 1rem;
+    width: 10%;
+    width: 50px;
+    padding: 0px;
+}
+
+.txt-controll .btn{
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 7px;
+    color: var(--clr2);
+    box-shadow: inset 0px -3px 4px 0px #0000009e;
+}
 
 .edit-container .txt-edit {
-    grid-row: 3/5;
-    grid-column: 1/7;
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
 
     background-color: rgb(57 181 166);
     border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.txt-edit .btn{
+    border-radius: 7px;
+    border: 0;
     padding: 5px;
-}
-
-/* BOTTONS */
-
-.edit-container .txt-edit .btn {
+    box-shadow: inset 0px -2px 4px 0px #0000009e;
     background-color: var(--clr2);
-    padding: 5px;
-    font-weight: 700px;
+    font-weight: 700;
 }
 
-.edit-container .txt-controll .btn {
-    /* padding: 0 7px; */
-    color: var(--clr2);
+.txt-edit select{
+    grid-column: 1/4;
+    border-radius: 7px;
 }
 
-.edit-container .txt-controll .btn:not(:last-child) {
-    margin-inline-end: 20px;
+.txt-edit input{
+    border-radius: 7px;
 }
 
-.txt-controll .switch-btn {
-    background-color: rgb(88, 180, 208);
-}
-
-.txt-controll .add-btn {
-    background-color: rgb(79, 216, 118);
-}
-
-.txt-controll .remove-btn {
-    background-color: rgb(222, 51, 51);
-}
-
-.txt-controll .up-btn {
-    background-color: rgb(220, 161, 22);
-}
-
-.txt-controll .down-btn {
-    background-color: rgb(205, 60, 147);
-}
-
-.edit-container .emojis-container {
-    grid-row: 5/6;
-    grid-column: 1/7;
-
+.edit-container .emojis-container{
     background-color: var(--clr2);
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
     border-radius: 30px;
 }
 
-.edit-container .save-btn {
-    background-color: rgb(168, 72, 190);
-    grid-row: 6/7;
-    grid-column: 4/7;
+.edit-container .save-container{
+    display: flex;
 }
-
-.edit-container .share-btn {
-    background-color: rgb(75, 129, 170);
-    grid-row: 6/7;
-    grid-column: 1/4;
-}
-
-/* SCREEN */
-
-.screen {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.556);
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 10;
-  
-    transition: opacity 0.6s;
-  }
-  
-  body.menu-open .screen {
-    pointer-events: auto;
-    opacity: 1;
-  }
-
 
 /* mq */
 
 
-@media(max-width:740px) {
+@media(max-width:800px) {
 
     /* HEADER */
     .main-header {
@@ -247,17 +210,15 @@
         position: fixed;
         display: flex;
         flex-direction: column;
-        top: 75px;
+        top: 79px;
         left: 0;
         width: 100%;
         font-size: 1.5em;
-
         transition: 0.5s;
         opacity: 1;
 
         transform: translateX(100%);
         transition: transform 0.6s;
-
     }
 
     body.menu-open .main-nav {
@@ -274,8 +235,12 @@
     }
 
     /* MAIN CONTAINER */
- 
-    .main-container .main-page{
+
+    /* MAIN PAGE */
+
+    /* filter */
+
+    .main-container .main-page {
         margin: 90px 1rem 1rem 1rem;
     }
 
@@ -290,35 +255,60 @@
     }
 
     .main-container .filter-container .words-filter {
-        width: 80%;
+        width: 70%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .main-container .filter-container .more-btn {
+        width: 20%;
         margin-bottom: 20px;
     }
+
+    /* GALLERY */
 
     .main-container .main-page .gallery-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
+    /* EDIT PAGE */
+
+    
     .main-container .edit-page {
         flex-direction: column;
     }
+    
+    /* CANVAS CONTAINER */
 
-    /* .edit-page .canvas-container {
-        margin-bottom: 10px;
-        height: 500px;
-        margin: 20px;
-    } */
-
-    .edit-page .edit-container {
-        /* margin-left: 20px; */
-        /* margin-right: 50px; */
-        width: 70%;
+    .edit-page .canvas-container{
+        margin: 110px 50px 30px 50px;
+        width: 300px;
+        height: 300px;
     }
 
+    /* EDIT CONTAINER */
+
+    .edit-page .edit-container {
+        width: 320px;
+        height: 345px;
+    }
+    
+    .edit-container form input {
+        padding: 7px;
+    }
+
+    .txt-controll .btn{
+        font-size: 1.5rem;
+    }
+
+    .txt-edit .btn{
+        font-size: 1rem;
+    }
 
 }
 
-@media(min-width:740px) {
+@media(min-width:800px) {
 
     /* HEADER */
     .main-header {
@@ -335,36 +325,44 @@
         display: none;
     }
 
-    .main-header .nav{
+    .main-header .nav {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
     }
 
-    .main-header .main-nav a{
+    .main-header .main-nav a {
         height: 130px;
     }
 
-    .main-header .main-nav a{
+    .main-header .main-nav a {
         padding: 7px;
         border-radius: 30px;
     }
-    
+
     .main-header .main-nav a:hover {
         color: var(--clr3);
         background-color: var(--clr2);
     }
-    
+
     .main-header .main-nav li:first-child {
         margin-inline-end: 3.75rem;
     }
-    
+
     .main-header .main-nav li:last-child {
         margin-inline-end: 5rem;
     }
 
     /* MAIN CONTAINER */
+
+    /* mainPage */
+
+    /* FILTER */
+
+    .main-container .main-page {
+        margin: 1rem;
+    }
 
     .main-container .main-page .filter-container {
         flex-direction: row;
@@ -373,30 +371,63 @@
 
     .main-page .filter-container input {
         margin-inline-end: 15px;
-        flex: 1;
-        flex-grow: 10;
+        width: 40%;
     }
 
     .main-container .filter-container .words-filter {
-        flex-grow: 10;
+        width: 50%;
     }
+
+    .main-container .filter-container .more-btn {
+        width: 10%;
+    }
+
+    /* GALLERY */
 
     .main-container .main-page .gallery-container {
         grid-template-columns: repeat(5, 1fr);
         gap: 1rem;
     }
 
+    /* EDIT PAGE */
     .edit-page .edit-container {
         height: 500px;
         width: 80%;
         margin: 0 50px 0 25px;
     }
 
-    /* .edit-page .canvas-container {
-        height: 500px;
-        width: 80%;
-        margin: 0 25px 0 50px;
-    } */
+    /* CANVAS CONTAINER */
+
+    .edit-page .canvas-container{
+        margin:30px;
+        width: 400px;
+        height: 400px;
+    }
+
+    /* EDIT CONTAINER */
+
+    .edit-page .edit-container {
+        width: 400px;
+        height: 400px;
+        margin: 30px;
+    }
+
+    .txt-controll .txt-input{
+        padding: 15px;
+        width: 70%;
+    }
+    .txt-controll form .btn{
+        width: 20%;
+        font-size: 2rem;
+    }
+
+    .txt-controll .btn{
+        font-size: 2rem;
+    }
+
+    .txt-edit .btn{
+        font-size: 1.1rem;
+    }
 
 }
 
@@ -404,16 +435,31 @@
 
     /* MAIN CONTAINER */
 
+    /* MAIN PAGE */
+
     .main-container .main-page .filter-container {
-        margin-bottom: 60px;
+        margin-bottom: 55px;
+    }
+    
+    .main-container .main-page .gallery-container {
+        gap: 1rem;
+        padding: 0 25px;
+    }
+    
+    /* edit page */
+
+    /* CANVAS CONTAINER */
+
+    .edit-page .canvas-container{
+        width: 500px;
+        height: 500px;
     }
 
-    .main-container .main-page .gallery-container {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.562rem;
-        padding: 0 25px;
+    /* EDIT CONTAINER */
 
+    .edit-page .edit-container {
+        width: 500px;
+        height: 409px;
     }
 
 }

@@ -46,9 +46,8 @@
             <div class="edit-container">
 
                 <div class="txt-controll">
-
                     <form onsubmit="onAddLine(event)">
-                        <input type="text" name="txt" oninput="onSetLineTxt(this.value)" />
+                        <input class="txt-input" type="text" name="txt" oninput="onSetLineTxt(this.value)" />
                         <button class="btn btn1 add-btn">&#10010</button>
                     </form>
 
@@ -66,9 +65,9 @@
                     <button class="btn btn1 decrease-btn" onclick="onDecreaseSize(this)">&#65
                         -</button>
 
-                    <!-- <button class="btn btn1 rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="btn btn1 rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
                     <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-right"></i></button>
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button> -->
+                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button>
 
                     <select name="fonts" onchange="onChangeFont(this.value)">
                         <option value="Impact">Impact</option>
@@ -79,14 +78,17 @@
                     <input type="color" name="stroke-color" onchange="onSetStrokeColor(this.value)" />
                 </div>
 
-                <div class="emojis-container"></div>
+                <div class="emojis-container">😁 😥 🤓 👺 ❤️ 🏆</div>
 
-                <button class="btn btn2 share-btn" onclick="onShareMeme()"><i class="fa-solid fa-share-nodes"></i>
-                    Share</button>
-                <button class="btn btn2 save-btn"><a href="#" onclick="onSaveMeme(this)" download="file-name">&#8681
-                        Download</a></button>
-                <p class="user-msg"></p>
-                <div class="share-container"></div>
+                <div class="save-container">
+                    <button class="btn btn2 share-btn" onclick="onShareMeme()"><i class="fa-solid fa-share-nodes"></i>
+                        Share</button>
+                    <button class="btn btn2 save-btn"><a href="#" onclick="onSaveMeme(this)" download="file-name">&#8681
+                            Download</a></button>
+                    <p class="user-msg"></p>
+                    <div class="share-container"></div>
+                </div>
+
             </div>
         </div>
 

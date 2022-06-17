@@ -15,18 +15,3 @@
 .hide {
     display: none;
 }
-
-.btn1 {
-    padding: 0 25px;
-    border-radius: 7px;
-    border: 0;
-    box-shadow: inset 0px -2px 1px 0px #0000009e;
-}
-
-.btn2 {
-    border-radius: 7px;
-    color: var(--clr2);
-    border: 0;
-    padding: 5px;
-    box-shadow: inset 0px 2px 2px 0px #ffffff9e;
-}
