@@ -1,25 +1,30 @@
 'use strict'
 
+var gFilterBy = ''
+var gImojis = ['😁', '🤓', '❤️', '😑', '🤣']
 var gCurrLine = 0
 var gFont = 'impact'
 var gKeywordSearchCountMap = {
-    'funny': 12,
-    'cat': 16,
-    'baby': 2
+    'Funny': 12,
+    'Animals': 16,
+    'Baby': 2,
+    'Movies': 7,
+    'Celeb': 16,
+    'Israel': 20,
 }
 
 var gImgs = [
-    { id: 1, url: 'imgs/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'imgs/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'imgs/3.jpg', keywords: ['funny', 'cat'] },
-    { id: 4, url: 'imgs/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'imgs/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'imgs/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'imgs/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'imgs/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'imgs/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'imgs/10.jpg', keywords: ['funny', 'cat'] },
-    { id: 11, url: 'imgs/11.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'imgs/1.jpg', keywords: ['Funny', 'Celeb'] },
+    { id: 2, url: 'imgs/2.jpg', keywords: ['Cute', 'Animals'] },
+    { id: 3, url: 'imgs/3.jpg', keywords: ['Cute', 'Baby', 'Animals'] },
+    { id: 4, url: 'imgs/4.jpg', keywords: ['Animals', 'Cute'] },
+    { id: 5, url: 'imgs/5.jpg', keywords: ['Baby', 'Funny'] },
+    { id: 6, url: 'imgs/6.jpg', keywords: ['Funny'] },
+    { id: 7, url: 'imgs/7.jpg', keywords: ['Baby', 'Fanny'] },
+    { id: 8, url: 'imgs/8.jpg', keywords: ['Funny', 'Movies'] },
+    { id: 9, url: 'imgs/9.jpg', keywords: ['Funny', 'Baby'] },
+    { id: 10, url: 'imgs/10.jpg', keywords: ['Funny', 'Celeb'] },
+    { id: 11, url: 'imgs/11.jpg', keywords: ['Funny'] },
     { id: 12, url: 'imgs/12.jpg', keywords: ['funny', 'cat'] },
     { id: 13, url: 'imgs/13.jpg', keywords: ['funny', 'cat'] },
     { id: 14, url: 'imgs/14.jpg', keywords: ['funny', 'cat'] },
@@ -48,18 +53,24 @@ var gMeme = {
             isSelected: true
         },
         {
-            txt: 'I love to sleep',
+            txt: 'Armed in knowledge',
             size: 25,
             align: 'ltr',
             color: 'white',
             borderColor: 'black',
             place: {
                 x: 30,
-                y: 450
+                y: 280
             },
             isSelected: false
         }
     ]
+}
+
+function sortBy(filterBy) {
+    console.log(filterBy);
+    gFilterBy = filterBy
+    console.log(gFilterBy);
 }
 
 function getMeme() {
@@ -68,6 +79,14 @@ function getMeme() {
 
 function getImgs() {
     return gImgs
+}
+
+function getImojis() {
+    return gImojis
+}
+
+function getKeywordsMap(){
+    return gKeywordSearchCountMap
 }
 
 function setImg(imgId) {
@@ -92,7 +111,7 @@ function DecreaseSize() {
 }
 
 function IncreaseSize() {
-    if (gMeme.lines[gCurrLine].size === 47) return
+    if (gMeme.lines[gCurrLine].size === 40) return
     gMeme.lines[gCurrLine].size += 1
 }
 
@@ -135,7 +154,7 @@ function _createLine(txt) {
         borderColor: 'black',
         place: {
             x: 50,
-            y: 300
+            y: 200
         },
         isSelected: true
     }

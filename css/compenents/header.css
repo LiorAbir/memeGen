@@ -1,3 +1,8 @@
+
+
+/* לא העברתי הכל לתיקיות כי  זה עשה לי שגיאה  */
+
+
 /* header */
 .main-header {
     background-image: linear-gradient(to right, rgb(66, 144, 170), rgb(49, 218, 162));
@@ -24,7 +29,7 @@
 
 /* GALLERY*/
 
- .main-container .main-page {
+.main-container .main-page {
     background-color: var(--clr4);
     padding: 25px;
     border-radius: 10px;
@@ -78,7 +83,7 @@
 
 .main-page .gallery-container .img {
     border-radius: 5px;
-} 
+}
 
 
 
@@ -95,19 +100,20 @@
     border: 8px solid rgba(253, 253, 253, 0.245);
     border-radius: 30px;
 }
+
 .edit-page .edit-container {
     background-color: var(--clr4);
     border-radius: 30px;
     padding: 20px;
 
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .edit-container .txt-controll {
     /* background-color: aqua; */
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,7 +146,7 @@
     padding: 0px;
 }
 
-.txt-controll .btn{
+.txt-controll .btn {
     border: 0;
     padding: 5px 10px;
     border-radius: 7px;
@@ -160,25 +166,17 @@
     margin-bottom: 15px;
 }
 
-.txt-edit .btn{
-    border-radius: 7px;
-    border: 0;
-    padding: 5px;
-    box-shadow: inset 0px -2px 4px 0px #0000009e;
-    background-color: var(--clr2);
-    font-weight: 700;
-}
-
-.txt-edit select{
+.txt-edit select {
     grid-column: 1/4;
     border-radius: 7px;
 }
 
-.txt-edit input{
+.txt-edit input {
     border-radius: 7px;
+    display: none;
 }
 
-.edit-container .emojis-container{
+.edit-container .emojis-container {
     background-color: var(--clr2);
     padding: 10px;
     font-size: 1.5rem;
@@ -187,13 +185,18 @@
     border-radius: 30px;
 }
 
-.edit-container .save-container{
+.edit-container .emojis-container .imoji:hover {
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.edit-container .save-container {
     display: flex;
 }
 
+
+
 /* mq */
-
-
 @media(max-width:800px) {
 
     /* HEADER */
@@ -234,8 +237,6 @@
         padding: 15px;
     }
 
-    /* MAIN CONTAINER */
-
     /* MAIN PAGE */
 
     /* filter */
@@ -274,14 +275,14 @@
 
     /* EDIT PAGE */
 
-    
+
     .main-container .edit-page {
         flex-direction: column;
     }
-    
+
     /* CANVAS CONTAINER */
 
-    .edit-page .canvas-container{
+    .edit-page .canvas-container {
         margin: 110px 50px 30px 50px;
         width: 300px;
         height: 300px;
@@ -293,16 +294,16 @@
         width: 320px;
         height: 345px;
     }
-    
+
     .edit-container form input {
         padding: 7px;
     }
 
-    .txt-controll .btn{
+    .txt-controll .btn {
         font-size: 1.5rem;
     }
 
-    .txt-edit .btn{
+    .txt-edit .btn {
         font-size: 1rem;
     }
 
@@ -398,8 +399,8 @@
 
     /* CANVAS CONTAINER */
 
-    .edit-page .canvas-container{
-        margin:30px;
+    .edit-page .canvas-container {
+        margin: 30px;
         width: 400px;
         height: 400px;
     }
@@ -412,20 +413,21 @@
         margin: 30px;
     }
 
-    .txt-controll .txt-input{
+    .txt-controll .txt-input {
         padding: 15px;
         width: 70%;
     }
-    .txt-controll form .btn{
+
+    .txt-controll form .btn {
         width: 20%;
         font-size: 2rem;
     }
 
-    .txt-controll .btn{
+    .txt-controll .btn {
         font-size: 2rem;
     }
 
-    .txt-edit .btn{
+    .txt-edit .btn {
         font-size: 1.1rem;
     }
 
@@ -440,17 +442,17 @@
     .main-container .main-page .filter-container {
         margin-bottom: 55px;
     }
-    
+
     .main-container .main-page .gallery-container {
         gap: 1rem;
         padding: 0 25px;
     }
-    
+
     /* edit page */
 
     /* CANVAS CONTAINER */
 
-    .edit-page .canvas-container{
+    .edit-page .canvas-container {
         width: 500px;
         height: 500px;
     }

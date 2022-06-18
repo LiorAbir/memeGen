@@ -30,8 +30,8 @@
 
         <div class="main-page">
             <div class="filter-container flex">
-                <input type="search" name="filter" placeholder="Search" />
-                <div class="words-filter">Funny Cat Happy</div>
+                <input type="search" name="filter" placeholder="Search" oninput="onSortBy(this.value)" />
+                <div class="words-filter"></div>
                 <button class="btn more-btn">More</button>
             </div>
             <div class="gallery-container"></div>
@@ -48,37 +48,44 @@
                 <div class="txt-controll">
                     <form onsubmit="onAddLine(event)">
                         <input class="txt-input" type="text" name="txt" oninput="onSetLineTxt(this.value)" />
-                        <button class="btn btn1 add-btn">&#10010</button>
+                        <button class="btn add-btn">&#10010</button>
                     </form>
 
-                    <button class="btn btn1 switch-btn" onclick="onSwitchLine()">&#8645</button>
-                    <button class="btn btn1 remove-btn" onclick="onRemoveLine()"><i
+                    <button class="btn switch-btn" onclick="onSwitchLine()">&#8645</button>
+                    <button class="btn remove-btn" onclick="onRemoveLine()"><i
                             class="fa-solid fa-trash"></i></button>
-                    <button class="btn btn1 up-btn" onclick="onMoveTextUp()">&#8679</button>
-                    <button class="btn btn1 down-btn" onclick="onMoveTextDown()">&#8681</button>
+                    <button class="btn up-btn" onclick="onMoveTextUp()">&#8679</button>
+                    <button class="btn down-btn" onclick="onMoveTextDown()">&#8681</button>
                 </div>
 
 
                 <div class="txt-edit">
-                    <button class="btn btn1 increase-btn" onclick="onIncreaseSize(this)">&#65
+                    <button class="btn increase-btn" onclick="onIncreaseSize(this)">&#65
                         +</button>
-                    <button class="btn btn1 decrease-btn" onclick="onDecreaseSize(this)">&#65
+                    <button class="btn decrease-btn" onclick="onDecreaseSize(this)">&#65
                         -</button>
 
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-right"></i></button>
-                    <button class="btn btn1 rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button>
+                    <button class="btn rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="btn rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-right"></i></button>
+                    <button class="btn rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button>
 
                     <select name="fonts" onchange="onChangeFont(this.value)">
                         <option value="Impact">Impact</option>
                         <option value="Verdana">Vardana</option>
                         <option value="Ariel">Ariel</option>
                     </select>
-                    <input type="color" name="fill-color" onchange="onSetFillColor(this.value)" />
-                    <input type="color" name="stroke-color" onchange="onSetStrokeColor(this.value)" />
+
+                    <label for="fill-color" class="fill">
+                        <i class="fa-solid fa-palette"></i>
+                        <input type="color" id="fill-color" name="fill-color" onchange="onSetFillColor(this.value)" />
+                    </label>
+
+                    <label for="stroke-color" class="stroke">S
+                        <input id="stroke-color" type="color" name="stroke-color" onchange="onSetStrokeColor(this.value)" />
+                    </label>
                 </div>
 
-                <div class="emojis-container">😁 😥 🤓 👺 ❤️ 🏆</div>
+                <div class="emojis-container"></div>
 
                 <div class="save-container">
                     <button class="btn btn2 share-btn" onclick="onShareMeme()"><i class="fa-solid fa-share-nodes"></i>

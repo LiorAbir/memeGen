@@ -3,12 +3,22 @@
 function renderGallery() {
     var strHTML = ``
     var img = getImgs()
-    console.log(img);
     for (var i = 0; i < img.length; i++) {
         strHTML += `<img src="imgs/${i + 1}.jpg" alt="img" class="img img${i + 1}" onclick="onImgSelect(${i + 1})">`
     }
 
     document.querySelector('.gallery-container').innerHTML = strHTML
+}
+
+function renderKeyWords() {
+    var keyWordsMap = getKeywordsMap()
+    var keyWords = Object.keys(keyWordsMap)
+    var strHTML = ``
+
+    for (var i = 0; i < keyWords.length; i++) {
+        strHTML += `<span class="key${i + 1}"> ${keyWords[i]}</span>`
+    }
+    document.querySelector('.words-filter').innerHTML = strHTML
 }
 
 function onImgSelect(imgId) {
@@ -18,9 +28,9 @@ function onImgSelect(imgId) {
     resizeCanvas()
     setImg(imgId)
     renderMeme()
-    // resizeCanvas(imgId)
-    // document.querySelector('.main-page').style.display = 'none'
-    // document.querySelector('.edit-page').style.display = 'block'
+}
 
-
+function onSortBy(filterBy) {
+    sortBy(filterBy)
+    renderGallery()
 }

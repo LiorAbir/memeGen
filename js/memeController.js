@@ -6,6 +6,21 @@ function renderMeme() {
     document.querySelector('[name=txt]').placeholder = meme.lines[0].txt
 }
 
+function renderImojis() {
+    var imojis = getImojis()
+    var strHTML = ''
+    for (var i = 0; i < imojis.length; i++) {
+        strHTML += `<span class="imoji imoji${i + 1}" onclick="onAddImoji(this)">${imojis[i]}</span>`
+    }
+    document.querySelector('.emojis-container').innerHTML = strHTML
+}
+
+function onAddImoji(elImoji) {
+    var imoji = elImoji.innerText
+    addLine(imoji)
+    renderMeme()
+}
+
 function drawMeme(meme) {
     var memeImg = getImgById(meme.selectedImgId)
     var img = new Image()
@@ -17,13 +32,13 @@ function drawMeme(meme) {
             drawText(memeLine)
         }
     }
+
 }
 
 function drawText(memeLine) {
     var xCoordinate = memeLine.place.x
     var yCoordinate = memeLine.place.y
     var font = getFont()
-
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = memeLine.borderColor
@@ -40,10 +55,10 @@ function drawText(memeLine) {
 
 function drawRect(x, y) {
     gCtx.beginPath();
-    gCtx.rect(5, y - 40, gCanvas.width - 10, gCanvas.height / 8);
+    gCtx.rect(5, y - 40, gCanvas.width - 10, gCanvas.height / 6);
 
     gCtx.fillStyle = 'rgb(189 193 194 / 20%)';
-    gCtx.fillRect(5, y - 40, gCanvas.width - 10, gCanvas.height / 8);
+    gCtx.fillRect(5, y - 40, gCanvas.width - 10, gCanvas.height / 6);
 
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
@@ -91,12 +106,9 @@ function onAddLine(ev) {
 
     var elInput = document.querySelector('[name=txt]')
     var txt = elInput.value
-    console.log(txt);
     addLine(txt)
     elInput.value = ''
     renderMeme()
-
-
 }
 
 function onMoveTextUp() {

@@ -2,6 +2,7 @@
 
 var gCanvas
 var gCtx
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function inIt() {
     gCanvas = document.querySelector('.canvas');
@@ -10,6 +11,8 @@ function inIt() {
     addEvListeners()
     resizeCanvas()
     renderGallery()
+    renderImojis()
+    renderKeyWords()
 }
 
 function addEvListeners() {
