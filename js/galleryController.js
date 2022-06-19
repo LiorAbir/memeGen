@@ -2,12 +2,13 @@
 
 function renderGallery() {
     var strHTML = ``
-    var img = getImgs()
-    for (var i = 0; i < img.length; i++) {
-        strHTML += `<img src="imgs/${i + 1}.jpg" alt="img" class="img img${i + 1}" onclick="onImgSelect(${i + 1})">`
-    }
+    var imgs = getImgs()
 
-    document.querySelector('.gallery-container').innerHTML = strHTML
+    var strHTML = imgs.map(
+        (img) => `<img src="${img.url}" alt="img" class="img img${img.id}" onclick="onImgSelect(${img.id})">`
+    )
+
+    document.querySelector('.gallery-container').innerHTML = strHTML.join('')
 }
 
 function renderKeyWords() {
@@ -16,9 +17,19 @@ function renderKeyWords() {
     var strHTML = ``
 
     for (var i = 0; i < keyWords.length; i++) {
-        strHTML += `<span class="key${i + 1}"> ${keyWords[i]}</span>`
+        strHTML += `<span class="key${i + 1}" onclick="onSetFilter('${keyWords[i]}')"> ${keyWords[i]}</span>`
     }
     document.querySelector('.words-filter').innerHTML = strHTML
+}
+
+function renderDataList(){
+    var keyWordsMap = getKeywordsMap()
+    var keyWords = Object.keys(keyWordsMap) 
+    var strHTML = keyWords.map(
+        (key) => `<option class="opt">${key}</option>`
+    )
+
+    document.querySelector('.opts').innerHTML = strHTML.join('')
 }
 
 function onImgSelect(imgId) {
@@ -30,7 +41,7 @@ function onImgSelect(imgId) {
     renderMeme()
 }
 
-function onSortBy(filterBy) {
-    sortBy(filterBy)
+function onSetFilter(filter) {
+    setFilter(filter)
     renderGallery()
 }

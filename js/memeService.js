@@ -1,39 +1,37 @@
 'use strict'
 
-var gFilterBy = ''
+var gFilterBy
 var gImojis = ['😁', '🤓', '❤️', '😑', '🤣']
 var gCurrLine = 0
 var gFont = 'impact'
 var gKeywordSearchCountMap = {
-    'Funny': 12,
-    'Animals': 16,
-    'Baby': 2,
-    'Movies': 7,
-    'Celeb': 16,
-    'Israel': 20,
+    'funny': 12,
+    'animals': 16,
+    'baby': 2,
+    'movies': 7,
+    'celeb': 16,
+    'israel': 20,
 }
 
 var gImgs = [
-    { id: 1, url: 'imgs/1.jpg', keywords: ['Funny', 'Celeb'] },
-    { id: 2, url: 'imgs/2.jpg', keywords: ['Cute', 'Animals'] },
-    { id: 3, url: 'imgs/3.jpg', keywords: ['Cute', 'Baby', 'Animals'] },
-    { id: 4, url: 'imgs/4.jpg', keywords: ['Animals', 'Cute'] },
-    { id: 5, url: 'imgs/5.jpg', keywords: ['Baby', 'Funny'] },
-    { id: 6, url: 'imgs/6.jpg', keywords: ['Funny'] },
-    { id: 7, url: 'imgs/7.jpg', keywords: ['Baby', 'Fanny'] },
-    { id: 8, url: 'imgs/8.jpg', keywords: ['Funny', 'Movies'] },
-    { id: 9, url: 'imgs/9.jpg', keywords: ['Funny', 'Baby'] },
-    { id: 10, url: 'imgs/10.jpg', keywords: ['Funny', 'Celeb'] },
-    { id: 11, url: 'imgs/11.jpg', keywords: ['Funny'] },
-    { id: 12, url: 'imgs/12.jpg', keywords: ['funny', 'cat'] },
-    { id: 13, url: 'imgs/13.jpg', keywords: ['funny', 'cat'] },
-    { id: 14, url: 'imgs/14.jpg', keywords: ['funny', 'cat'] },
-    { id: 15, url: 'imgs/15.jpg', keywords: ['funny', 'cat'] },
-    { id: 16, url: 'imgs/16.jpg', keywords: ['funny', 'cat'] },
-    { id: 17, url: 'imgs/17.jpg', keywords: ['funny', 'cat'] },
-    { id: 18, url: 'imgs/18.jpg', keywords: ['funny', 'cat'] },
-    { id: 19, url: 'imgs/19.jpg', keywords: ['funny', 'cat'] },
-    { id: 20, url: 'imgs/20.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'imgs/1.jpg', keywords: ['funny', 'celeb'] },
+    { id: 2, url: 'imgs/2.jpg', keywords: ['cute', 'animals'] },
+    { id: 3, url: 'imgs/3.jpg', keywords: ['cute', 'baby', 'animals'] },
+    { id: 4, url: 'imgs/4.jpg', keywords: ['animals', 'cute'] },
+    { id: 5, url: 'imgs/5.jpg', keywords: ['baby', 'funny'] },
+    { id: 6, url: 'imgs/6.jpg', keywords: ['funny'] },
+    { id: 7, url: 'imgs/7.jpg', keywords: ['baby', 'fanny'] },
+    { id: 8, url: 'imgs/8.jpg', keywords: ['funny', 'Movies'] },
+    { id: 9, url: 'imgs/9.jpg', keywords: ['funny', 'baby'] },
+    { id: 10, url: 'imgs/10.jpg', keywords: ['funny', 'celeb'] },
+    { id: 11, url: 'imgs/11.jpg', keywords: ['funny'] },
+    { id: 12, url: 'imgs/12.jpg', keywords: ['israel'] },
+    { id: 13, url: 'imgs/13.jpg', keywords: ['funny'] },
+    { id: 14, url: 'imgs/14.jpg', keywords: ['funny', 'movie'] },
+    { id: 15, url: 'imgs/15.jpg', keywords: ['movie'] },
+    { id: 16, url: 'imgs/16.jpg', keywords: ['funny'] },
+    { id: 17, url: 'imgs/17.jpg', keywords: ['celeb'] },
+    { id: 18, url: 'imgs/18.jpg', keywords: ['movie'] }
 ]
 
 var gMeme = {
@@ -46,11 +44,14 @@ var gMeme = {
             align: 'right',
             color: 'white',
             borderColor: 'black',
-            place: {
-                x: 30,
-                y: 50
+            pos: {
+                x: 10,
+                y: 40
             },
-            isSelected: true
+            isSelected: true,
+            isDrag: false,
+            font: 'impact',
+            width: 0,
         },
         {
             txt: 'Armed in knowledge',
@@ -58,19 +59,16 @@ var gMeme = {
             align: 'ltr',
             color: 'white',
             borderColor: 'black',
-            place: {
-                x: 30,
-                y: 280
+            pos: {
+                x: 10,
+                y: 290,
             },
-            isSelected: false
+            isSelected: false,
+            isDrag: false,
+            font: 'impact',
+            width: 0,
         }
     ]
-}
-
-function sortBy(filterBy) {
-    console.log(filterBy);
-    gFilterBy = filterBy
-    console.log(gFilterBy);
 }
 
 function getMeme() {
@@ -78,14 +76,22 @@ function getMeme() {
 }
 
 function getImgs() {
-    return gImgs
+    var imgs = gImgs
+    if (gFilterBy) {
+        imgs = gImgs.filter(img => img.keywords.some(key => key.startsWith(gFilterBy.toLowerCase())))
+    }
+    return imgs
 }
 
 function getImojis() {
     return gImojis
 }
 
-function getKeywordsMap(){
+function getLines() {
+    return gMeme.lines
+}
+
+function getKeywordsMap() {
     return gKeywordSearchCountMap
 }
 
@@ -93,26 +99,59 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
+function setFilter(filter) {
+    gFilterBy = filter
+}
+
+function _getCurrLine() {
+    return gMeme.lines[gCurrLine]
+}
+
+function setMemeProp(key, val) {
+    const line = _getCurrLine()
+    line[key] = val
+}
+
 function setLineTxt(txt) {
-    gMeme.lines[gCurrLine].txt = txt
+    // const line = _getCurrLine()
+    // const canvasWidth = getCanvasWidth()
+    // if (line.width + 30 > canvasWidth) return
+
+    setMemeProp('txt', txt)
 }
 
 function setFillColor(color) {
-    gMeme.lines[gCurrLine].color = color
+    setMemeProp('color', color)
 }
 
 function setStrokeColor(color) {
-    gMeme.lines[gCurrLine].borderColor = color
+    setMemeProp('borderColor', color)
+}
+
+function changeDirection(direction) {
+    const line = _getCurrLine()
+    switch (direction) {
+        case 'left':
+            line.pos.x = 5
+            break
+        case 'right':
+            line.pos.x = Math.abs(getCanvasWidth() - line.width - 5)
+            break
+        case 'center':
+            line.pos.x = Math.abs(getCanvasWidth() - line.width) / 2
+    }
 }
 
 function DecreaseSize() {
-    if (gMeme.lines[gCurrLine].size === 15) return
-    gMeme.lines[gCurrLine].size -= 1
+    const line = _getCurrLine()
+    if (line.size === 17) return
+    line.size -= 1
 }
 
 function IncreaseSize() {
-    if (gMeme.lines[gCurrLine].size === 40) return
-    gMeme.lines[gCurrLine].size += 1
+    const line = _getCurrLine()
+    if (line.size === 40) return
+    line.size += 1
 }
 
 function getImgById(imgId) {
@@ -121,8 +160,8 @@ function getImgById(imgId) {
 }
 
 function switchLine() {
-
-    gMeme.lines[gCurrLine].isSelected = false
+    const line = _getCurrLine()
+    line.isSelected = false
     gCurrLine += 1
 
     if (gCurrLine === gMeme.lines.length) gCurrLine = 0
@@ -136,9 +175,10 @@ function removeLine() {
     gCurrLine = 0
 }
 
-function addLine(txt) {
+function addTxt(txt) {
+    const line = _getCurrLine()
     if (gMeme.lines.length) {
-        gMeme.lines[gCurrLine].isSelected = false
+        line.isSelected = false
     }
     var newLine = _createLine(txt)
     gMeme.lines.push(newLine)
@@ -152,20 +192,23 @@ function _createLine(txt) {
         align: 'left',
         color: 'white',
         borderColor: 'black',
-        place: {
-            x: 50,
-            y: 200
+        pos: {
+            x: 10,
+            y: 150
         },
-        isSelected: true
+        isSelected: true,
+        isDrag: false,
+        font: 'impact',
+        width: 0
     }
 }
 
 function moveTextDown() {
-    gMeme.lines[gCurrLine].place.y += 10
+    gMeme.lines[gCurrLine].pos.y += 10
 }
 
 function moveTextUp() {
-    gMeme.lines[gCurrLine].place.y -= 10
+    gMeme.lines[gCurrLine].pos.y -= 10
 }
 
 function getFont() {
@@ -173,5 +216,53 @@ function getFont() {
 }
 
 function changeFont(font) {
-    gFont = font
+    setMemeProp('font', font)
+}
+
+// function updateKeyWordsSize(key) {
+//     console.log();
+//     console.log(gKeywordSearchCountMap.key);
+// }
+
+function getLineByPos(pos) {
+    if (!gMeme.lines.length) return
+    const clickedLine = gMeme.lines.find((line) => {
+        const xStart = line.pos.x
+        const xEnd = line.width + line.pos.x
+        const yStart = line.pos.y - line.size
+        const yEnd = line.pos.y
+
+        if (pos.x >= xStart && pos.x <= xEnd && pos.y >= yStart && pos.y <= yEnd) {
+            return line
+        }
+    })
+    if (clickedLine) {
+        setClickedLineSelected(clickedLine)
+    }
+    return clickedLine
+}
+
+function setClickedLineSelected(clickedLine) {
+    gMeme.lines[gCurrLine].isSelected = false
+    var lineIdx = gMeme.lines.findIndex(line => {
+        return line === clickedLine
+    })
+    gCurrLine = lineIdx
+    gMeme.lines[gCurrLine].isSelected = true
+}
+
+function setLineDrag(isDrag) {
+    var line = _getCurrLine()
+    line.isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    var line = _getCurrLine()
+    line.pos.x += dx
+    line.pos.y += dy
+}
+
+function getLineIsDrag(){
+    var line = _getCurrLine()
+    return line.isDrag
 }

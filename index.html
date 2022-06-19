@@ -26,18 +26,21 @@
         <button class="btn menu-btn" onclick="onToggleMenu()">☰</button>
     </header>
 
-    <section class="main-container">
+    <main class="main-container">
 
-        <div class="main-page">
+        <section class="main-page">
             <div class="filter-container flex">
-                <input type="search" name="filter" placeholder="Search" oninput="onSortBy(this.value)" />
+
+                <input type="search" name="filter" id="key-words" placeholder="Search" list="opts" oninput="onSetFilter(this.value)" />
+                <datalist id="opts" class="opts"></datalist>
+
                 <div class="words-filter"></div>
                 <button class="btn more-btn">More</button>
             </div>
             <div class="gallery-container"></div>
-        </div>
+        </section>
 
-        <div class="edit-page flex hide">
+        <section class="edit-page flex hide">
 
             <div class="canvas-container">
                 <canvas class="canvas"></canvas>
@@ -46,7 +49,7 @@
             <div class="edit-container">
 
                 <div class="txt-controll">
-                    <form onsubmit="onAddLine(event)">
+                    <form onsubmit="onAddTxt(event)">
                         <input class="txt-input" type="text" name="txt" oninput="onSetLineTxt(this.value)" />
                         <button class="btn add-btn">&#10010</button>
                     </form>
@@ -65,13 +68,12 @@
                     <button class="btn decrease-btn" onclick="onDecreaseSize(this)">&#65
                         -</button>
 
-                    <button class="btn rtl-btn" onclick="onChaneToRtl()"><i class="fa-solid fa-align-left"></i></button>
-                    <button class="btn rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-right"></i></button>
-                    <button class="btn rtl-btn" onclick="onChaneToLtr()"><i class="fa-solid fa-align-center"></i></button>
+                    <button class="btn dir-btn" data-direction="left" onclick="onChangeDirection(this)"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="btn dir-btn" data-direction="center" onclick="onChangeDirection(this)"><i class="fa-solid fa-align-center"></i></button>
+                    <button class="btn dir-btn" data-direction="right" onclick="onChangeDirection(this)"><i class="fa-solid fa-align-right"></i></button>
 
                     <select name="fonts" onchange="onChangeFont(this.value)">
                         <option value="Impact">Impact</option>
-                        <option value="Verdana">Vardana</option>
                         <option value="Ariel">Ariel</option>
                     </select>
 
@@ -97,11 +99,11 @@
                 </div>
 
             </div>
-        </div>
+        </section>
 
         </div>
 
-    </section>
+    </main>
 
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>

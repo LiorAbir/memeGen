@@ -17,7 +17,7 @@ function renderImojis() {
 
 function onAddImoji(elImoji) {
     var imoji = elImoji.innerText
-    addLine(imoji)
+    addTxt(imoji)
     renderMeme()
 }
 
@@ -27,18 +27,18 @@ function drawMeme(meme) {
     img.src = memeImg.url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        updateLinesPos()
         for (var i = 0; i < meme.lines.length; i++) {
             var memeLine = meme.lines[i]
             drawText(memeLine)
         }
     }
-
 }
 
 function drawText(memeLine) {
-    var xCoordinate = memeLine.place.x
-    var yCoordinate = memeLine.place.y
-    var font = getFont()
+    var xCoordinate = memeLine.pos.x
+    var yCoordinate = memeLine.pos.y
+    var font = memeLine.font
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = memeLine.borderColor
@@ -48,17 +48,20 @@ function drawText(memeLine) {
     gCtx.fillText(memeLine.txt, xCoordinate, yCoordinate)
     gCtx.strokeText(memeLine.txt, xCoordinate, yCoordinate)
 
+    memeLine.width = gCtx.measureText(memeLine.txt).width
+
     if (memeLine.isSelected === true) {
-        drawRect(xCoordinate, yCoordinate)
+        drawRect(memeLine)
     }
 }
 
-function drawRect(x, y) {
+function drawRect(line) {
     gCtx.beginPath();
-    gCtx.rect(5, y - 40, gCanvas.width - 10, gCanvas.height / 6);
+
+    gCtx.rect(line.pos.x - 5, line.pos.y - line.size, line.width + 10, line.size + 10)
 
     gCtx.fillStyle = 'rgb(189 193 194 / 20%)';
-    gCtx.fillRect(5, y - 40, gCanvas.width - 10, gCanvas.height / 6);
+    gCtx.fillRect(line.pos.x - 5, line.pos.y - line.size, line.width + 10, line.size + 10);
 
     gCtx.strokeStyle = 'black';
     gCtx.stroke();
@@ -80,13 +83,11 @@ function onSetStrokeColor(color) {
 }
 
 function onDecreaseSize() {
-    console.log('hhh');
     DecreaseSize()
     renderMeme()
 }
 
 function onIncreaseSize() {
-    console.log('hhh');
     IncreaseSize()
     renderMeme()
 }
@@ -101,12 +102,11 @@ function onRemoveLine() {
     renderMeme()
 }
 
-function onAddLine(ev) {
+function onAddTxt(ev) {
     ev.preventDefault()
-
     var elInput = document.querySelector('[name=txt]')
     var txt = elInput.value
-    addLine(txt)
+    addTxt(txt)
     elInput.value = ''
     renderMeme()
 }
@@ -130,6 +130,39 @@ function onSaveMeme(elLink) {
 function onChangeFont(font) {
     changeFont(font)
     renderMeme()
+}
+
+function onChangeDirection(elBtn) {
+    var direction = elBtn.dataset.direction
+    changeDirection(direction)
+    renderMeme()
+}
+
+function updateLinesPos() {
+    var lines = getLines()
+    var canvasHeight = getCanvasHeight()
+    // console.log(lines);
+    // console.log(canvasHeight);
+
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i]
+        // console.log(line);
+        if (i === 0) {
+            line.y = canvasHeight - 30
+        }
+        // switch (i) {
+        //     case 0:
+        //         line.y = canvasHeight-30 
+        //         break
+        //     case 2:
+        //         line.y = 35
+        //             break
+        //     case 3:
+        //         line.y = canvasHeight/2
+        // }
+    }
+
+    // console.log(lines);
 }
 
 function onShareMeme() {

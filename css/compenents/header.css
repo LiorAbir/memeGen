@@ -54,6 +54,10 @@
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
 }
 
+.filter-container .words-filter span{
+        text-transform: capitalize; 
+}
+
 .main-container .filter-container .words-filter {
     border-radius: 30px;
     background-color: var(--clr6);
